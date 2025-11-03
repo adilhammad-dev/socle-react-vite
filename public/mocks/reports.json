@@ -1,0 +1,8 @@
+{
+  "data": [
+    { "id": "r1", "title": "Revenue", "value": 12345.67, "updatedAt": "2025-10-28T10:00:00.000Z" },
+    { "id": "r2", "title": "Users", "value": 987, "updatedAt": "2025-10-29T10:00:00.000Z" },
+    { "id": "r3", "title": "Orders", "value": 321, "updatedAt": "2025-10-30T10:00:00.000Z" }
+  ]
+}
+

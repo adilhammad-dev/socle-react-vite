@@ -1,0 +1,6 @@
+[
+  { "id": 1, "title": "Learn Feature-Sliced Design", "completed": true },
+  { "id": 2, "title": "Wire Redux Toolkit store", "completed": true },
+  { "id": 3, "title": "Fetch todos with RTK Query", "completed": false }
+]
+
