@@ -13,8 +13,11 @@ export default defineConfig({
       'components': fileURLToPath(new URL('./src/components', import.meta.url)),
       'containers': fileURLToPath(new URL('./src/containers', import.meta.url)),
       'pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
+      'routes': fileURLToPath(new URL('./src/routes', import.meta.url)),
       'types': fileURLToPath(new URL('./src/types', import.meta.url)),
       'utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
+      'hooks': fileURLToPath(new URL('./src/hooks', import.meta.url)),
+      'examples': fileURLToPath(new URL('./src/examples', import.meta.url)),
     },
   },
 })

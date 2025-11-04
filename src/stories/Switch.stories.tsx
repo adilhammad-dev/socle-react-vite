@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Switch } from '../components/ui';
+import { Switch } from 'components/ui';
 
 const meta: Meta<typeof Switch> = {
   title: 'Form/Switch',

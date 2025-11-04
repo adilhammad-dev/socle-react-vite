@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Gauge } from '../components/ui';
+import { Gauge } from 'components/ui';
 
 const meta: Meta<typeof Gauge> = {
   title: 'Visualization/Gauge',

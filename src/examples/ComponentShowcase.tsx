@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider, CssBaseline, Box } from '@mui/material';
-import { lightTheme } from '../components/ui/theme';
+import { lightTheme } from 'components/ui/theme';
 import {
   Container,
   Grid,
@@ -27,7 +27,7 @@ import {
   Skeleton,
   ChartWrapper,
   Gauge,
-} from '../components/ui';
+} from 'components/ui';
 import { Star, Favorite, Mail, Settings } from '@mui/icons-material';
 
 /**

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Slider } from '../components/ui';
+import { Slider } from 'components/ui';
 
 const meta: Meta<typeof Slider> = {
   title: 'Form/Slider',

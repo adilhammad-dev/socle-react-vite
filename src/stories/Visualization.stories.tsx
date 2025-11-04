@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ChartWrapper } from '../components/ui';
+import { ChartWrapper } from 'components/ui';
 
 const meta: Meta<typeof ChartWrapper> = {
   title: 'Visualization/ChartWrapper',

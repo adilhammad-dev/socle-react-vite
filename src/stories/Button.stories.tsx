@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../components/ui';
+import { Button } from 'components/ui';
 import { Star, Favorite } from '@mui/icons-material';
 
 const meta: Meta<typeof Button> = {

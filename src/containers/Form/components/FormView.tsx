@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Grid, Stack, Typography, Divider, Card, Box } from '../../../components/ui';
-import { Input, TextArea, Select, Checkbox, Radio, Switch, Slider, DatePicker, FileUpload, SearchField } from '../../../components/ui';
+import { Container, Grid, Stack, Typography, Divider, Card, Box } from 'components/ui';
+import { Input, TextArea, Select, Checkbox, Radio, Switch, Slider, DatePicker, FileUpload, SearchField } from 'components/ui';
 
 interface FormViewProps {
   inputValue: string;

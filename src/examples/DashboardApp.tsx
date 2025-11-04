@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import { lightTheme, darkTheme } from '../components/ui/theme';
+import { lightTheme, darkTheme } from 'components/ui/theme';
 import {
   // Layout
   Container,
@@ -34,7 +34,7 @@ import {
   ThemeToggle,
   UserMenu,
   CommandPalette,
-} from '../components/ui';
+} from 'components/ui';
 import {
   Dashboard,
   Settings,

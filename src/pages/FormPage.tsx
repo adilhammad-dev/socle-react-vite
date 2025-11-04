@@ -1,4 +1,4 @@
-import FormContainer from '../containers/Form/FormContainer';
+import FormContainer from 'containers/Form/FormContainer';
 
 /**
  * Form Elements Demo Page

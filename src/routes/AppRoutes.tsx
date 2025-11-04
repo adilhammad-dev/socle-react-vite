@@ -1,10 +1,10 @@
 import { Route } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
-import BasicPage from '../pages/BasicPage';
-import FormPage from '../pages/FormPage';
-import DashboardApp from '../examples/DashboardApp';
-import ComponentShowcase from '../examples/ComponentShowcase';
-import { NotFoundPage } from '../components/router';
+import HomePage from 'pages/HomePage';
+import BasicPage from 'pages/BasicPage';
+import FormPage from 'pages/FormPage';
+import DashboardApp from 'examples/DashboardApp';
+import ComponentShowcase from 'examples/ComponentShowcase';
+import { NotFoundPage } from 'components/router';
 
 /**
  * Application Routes Configuration

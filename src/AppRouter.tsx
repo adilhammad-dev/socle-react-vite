@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { ThemeProvider as MuiThemeProvider, CssBaseline } from '@mui/material';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './components/ui/theme';
-import { Navbar, ThemeToggle } from './components/ui';
-import { NavigationMenu, LoadingFallback, Footer, menuItems } from './components/router';
-import { appRoutes } from './routes/AppRoutes';
-import { useThemeMode, useMenuState } from './hooks/useRouterState';
+import { lightTheme, darkTheme } from 'components/ui/theme';
+import { Navbar, ThemeToggle } from 'components/ui';
+import { NavigationMenu, LoadingFallback, Footer, menuItems } from 'components/router';
+import { appRoutes } from 'routes/AppRoutes';
+import { useThemeMode, useMenuState } from 'hooks/useRouterState';
 import { AppContainer, MainContent } from './AppRouter.styled';
 
 /**

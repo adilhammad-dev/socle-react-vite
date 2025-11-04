@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Chip } from '../components/ui';
+import { Chip } from 'components/ui';
 import { Star } from '@mui/icons-material';
 
 const meta: Meta<typeof Chip> = {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Alert, Toast, Modal, Dialog, ProgressBar, Spinner, Skeleton, EmptyState } from '../components/ui';
-import { Button } from '../components/ui';
+import { Alert, Toast, Modal, Dialog, ProgressBar, Spinner, Skeleton, EmptyState } from 'components/ui';
+import { Button } from 'components/ui';
 import { Inbox } from '@mui/icons-material';
 import { useState } from 'react';
 

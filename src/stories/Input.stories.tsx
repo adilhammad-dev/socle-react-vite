@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Input } from '../components/ui';
+import { Input } from 'components/ui';
 import { Search } from '@mui/icons-material';
 
 const meta: Meta<typeof Input> = {

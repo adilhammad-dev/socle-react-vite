@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Stack, Typography, Divider, Card, Button, Badge, Chip, Tooltip, Box } from '../../../components/ui';
+import { Container, Grid, Stack, Typography, Divider, Card, Button, Badge, Chip, Tooltip, Box } from 'components/ui';
 import { Star, Favorite, Mail } from '@mui/icons-material';
 
 /**
