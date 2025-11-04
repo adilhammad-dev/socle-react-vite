@@ -9,8 +9,7 @@ export const menuItems: MenuItem[] = [
   { path: '/', label: 'Home', available: true },
   { path: '/basic', label: 'Basic', available: true },
   { path: '/form', label: 'Forms', available: true },
-  { path: '/dashboard', label: 'Dashboard', available: true },
-  { path: '/showcase', label: 'Showcase', available: true },
+  { path: '/examples', label: 'Examples', available: true },
 
   // ⏳ Pending Refactoring (Need Container → View separation)
   { path: '/navigation', label: 'Navigation', available: false },

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Grid, Stack, Typography, Divider, Card, Button, Badge, Chip, Tooltip, Box } from 'components/ui';
 import { Star, Favorite, Mail } from '@mui/icons-material';
 
@@ -7,7 +6,7 @@ import { Star, Favorite, Mail } from '@mui/icons-material';
  */
 export function BasicView() {
   return (
-    <Container maxWidth="xl" sx={{ py: 4 }}>
+    <Container maxWidth="xl">
       <Typography variant="h3" gutterBottom>
         Basic Elements
       </Typography>
@@ -15,10 +14,10 @@ export function BasicView() {
         Fundamental UI building blocks for your application
       </Typography>
 
-      <Divider sx={{ my: 3 }} />
+      <Divider />
 
       {/* Buttons */}
-      <Card title="Buttons" sx={{ mb: 3 }}>
+      <Card title="Buttons">
         <Stack spacing={3}>
           <Box>
             <Typography variant="h6" gutterBottom>Variants</Typography>
@@ -60,7 +59,7 @@ export function BasicView() {
       </Card>
 
       {/* Typography */}
-      <Card title="Typography" sx={{ mb: 3 }}>
+      <Card title="Typography">
         <Stack spacing={2}>
           <Typography variant="h1">Heading 1</Typography>
           <Typography variant="h2">Heading 2</Typography>
@@ -148,7 +147,7 @@ export function BasicView() {
       </Grid>
 
       {/* Tooltips & Dividers */}
-      <Grid container spacing={3} sx={{ mt: 1 }}>
+      <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Card title="Tooltips">
             <Stack spacing={2}>

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import type { SvgIconProps } from '@mui/material';
 import * as MuiIcons from '@mui/icons-material';
 

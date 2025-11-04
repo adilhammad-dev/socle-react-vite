@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Divider as MuiDivider } from '@mui/material';
 import type { DividerProps as MuiDividerProps } from '@mui/material';
 

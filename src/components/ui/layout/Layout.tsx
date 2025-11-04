@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   Container as MuiContainer,
   Grid as MuiGrid,

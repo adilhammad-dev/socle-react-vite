@@ -3,12 +3,12 @@ import { BrowserRouter, Routes } from 'react-router-dom';
 import { ThemeProvider as MuiThemeProvider, CssBaseline } from '@mui/material';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from 'theme';
-import { GlobalStyle } from './GlobalStyle.ts';
+import { GlobalStyle, AppContainer, MainContent } from './GlobalStyle';
 import { Navbar, ThemeToggle } from 'components/ui';
-import { NavigationMenu, LoadingFallback, Footer, menuItems } from 'components/router';
+import { NavigationMenu, Footer, menuItems } from 'components/router';
+import LoadingPage from 'pages/LoadingPage';
 import { appRoutes } from 'routes/AppRoutes';
 import { useThemeMode, useMenuState } from 'hooks/useRouterState';
-import { AppContainer, MainContent } from './AppRouter.styled';
 
 /**
  * Main App Router Component
@@ -49,7 +49,7 @@ function AppRouter() {
 
             {/* Main Content */}
             <MainContent>
-              <React.Suspense fallback={<LoadingFallback />}>
+              <React.Suspense fallback={<LoadingPage />}>
                 <Routes>
                   {appRoutes}
                 </Routes>
