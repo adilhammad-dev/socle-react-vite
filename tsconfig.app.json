@@ -29,7 +29,9 @@
       "utils/*": ["./utils/*"],
       "hooks/*": ["./hooks/*"],
       "examples/*": ["./examples/*"],
-      "theme/*": ["./theme/*"]
+      "theme/*": ["./theme/*"],
+      "contexts/*": ["./contexts/*"],
+      "config/*": ["./config/*"]
     },
 
     /* Interop */
