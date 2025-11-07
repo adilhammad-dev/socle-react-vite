@@ -1,2 +1,0 @@
-export { BasicView } from './BasicView';
-

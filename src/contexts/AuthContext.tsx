@@ -1,178 +1,177 @@
 /**
  * MSAL Authentication Context
- *
- * Provides authentication context and hooks for the application
  */
 
-import { createContext, useContext, useEffect, useState } from 'react';
-import type { ReactNode } from 'react';
-import {
-  PublicClientApplication,
-  EventType,
-} from '@azure/msal-browser';
-import type {
-  AccountInfo,
-  AuthenticationResult,
-} from '@azure/msal-browser';
-import { msalConfig, loginRequest } from 'config/authConfig';
+import type {ReactNode} from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
+import type {AccountInfo, AuthenticationResult} from '@azure/msal-browser';
+import {EventType, PublicClientApplication} from '@azure/msal-browser';
+import {loginRequest, msalConfig, tokenRequest} from 'config/authConfig';
+import {security} from 'services/internals/security';
 
-// Create MSAL instance
 export const msalInstance = new PublicClientApplication(msalConfig);
 
-// Wait for MSAL to initialize
 msalInstance.initialize().then(() => {
-  // Handle redirect promise
-  msalInstance.handleRedirectPromise().then((response) => {
-    if (response) {
-      msalInstance.setActiveAccount(response.account);
-    }
-  }).catch((error) => {
-    console.error('Error handling redirect:', error);
-  });
+    msalInstance.handleRedirectPromise().then((response) => {
+        if (response) {
+            msalInstance.setActiveAccount(response.account);
+        }
+    }).catch((error) => {
+        console.error('Error handling redirect:', error);
+    });
 });
 
 interface AuthContextType {
-  isAuthenticated: boolean;
-  user: AccountInfo | null;
-  loading: boolean;
-  login: () => Promise<void>;
-  logout: () => Promise<void>;
-  getAccessToken: () => Promise<string | null>;
+    isAuthenticated: boolean;
+    user: AccountInfo | null;
+    loading: boolean;
+    login: () => Promise<void>;
+    logout: () => Promise<void>;
+    getAccessToken: () => Promise<string | null>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 interface AuthProviderProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
-export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState<AccountInfo | null>(null);
-  const [loading, setLoading] = useState(true);
+export const AuthProvider = ({children}: AuthProviderProps) => {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState<AccountInfo | null>(null);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Check if user is already logged in
-    const accounts = msalInstance.getAllAccounts();
+    const getAccessToken = async (): Promise<string | null> => {
+        const account = msalInstance.getActiveAccount();
 
-    if (accounts.length > 0) {
-      msalInstance.setActiveAccount(accounts[0]);
-      setUser(accounts[0]);
-      setIsAuthenticated(true);
-    }
+        if (!account) {
+            return null;
+        }
 
-    setLoading(false);
+        try {
+            const response = await msalInstance.acquireTokenSilent({
+                ...tokenRequest,
+                account,
+            });
+            return response.accessToken;
+        } catch (error: any) {
+            const errorCode = error.errorCode || error.error;
 
-    // Set up event callbacks
-    const callbackId = msalInstance.addEventCallback((event) => {
-      if (event.eventType === EventType.LOGIN_SUCCESS && event.payload) {
-        const payload = event.payload as AuthenticationResult;
-        const account = payload.account;
-        msalInstance.setActiveAccount(account);
-        setUser(account);
-        setIsAuthenticated(true);
-      }
+            if (errorCode === 'login_required' ||
+                errorCode === 'interaction_required' ||
+                errorCode === 'consent_required') {
 
-      if (event.eventType === EventType.LOGOUT_SUCCESS) {
-        setUser(null);
-        setIsAuthenticated(false);
-      }
+                try {
+                    const response = await msalInstance.acquireTokenPopup(tokenRequest);
+                    return response.accessToken;
+                } catch (popupError) {
+                    setIsAuthenticated(false);
+                    setUser(null);
 
-      if (event.eventType === EventType.LOGIN_FAILURE) {
-        console.error('Login failed:', event.error);
-      }
+                    if (!window.location.pathname.includes('/login')) {
+                        window.location.href = '/login';
+                    }
 
-      if (event.eventType === EventType.ACQUIRE_TOKEN_FAILURE) {
-        console.error('Token acquisition failed:', event.error);
-      }
-    });
+                    return null;
+                }
+            }
 
-    return () => {
-      if (callbackId) {
-        msalInstance.removeEventCallback(callbackId);
-      }
+            return null;
+        }
     };
-  }, []);
 
-  const login = async () => {
-    try {
-      setLoading(true);
-      const loginResponse = await msalInstance.loginPopup(loginRequest);
+    useEffect(() => {
+        security.setAccessTokenFunction(getAccessToken);
 
-      msalInstance.setActiveAccount(loginResponse.account);
-      setUser(loginResponse.account);
-      setIsAuthenticated(true);
-    } catch (error) {
-      console.error('Login error:', error);
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  };
+        const accounts = msalInstance.getAllAccounts();
 
-  const logout = async () => {
-    try {
-      setLoading(true);
-      await msalInstance.logoutPopup({
-        mainWindowRedirectUri: '/',
-      });
-      setUser(null);
-      setIsAuthenticated(false);
-    } catch (error) {
-      console.error('Logout error:', error);
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  };
+        if (accounts.length > 0) {
+            msalInstance.setActiveAccount(accounts[0]);
+            setUser(accounts[0]);
+            setIsAuthenticated(true);
+        }
 
-  const getAccessToken = async (): Promise<string | null> => {
-    const account = msalInstance.getActiveAccount();
+        setLoading(false);
 
-    if (!account) {
-      return null;
-    }
+        const callbackId = msalInstance.addEventCallback((event) => {
+            if (event.eventType === EventType.LOGIN_SUCCESS && event.payload) {
+                const payload = event.payload as AuthenticationResult;
+                msalInstance.setActiveAccount(payload.account);
+                setUser(payload.account);
+                setIsAuthenticated(true);
+            }
 
-    try {
-      const response = await msalInstance.acquireTokenSilent({
-        scopes: loginRequest.scopes,
-        account,
-      });
-      return response.accessToken;
-    } catch (error) {
-      console.error('Token acquisition error:', error);
+            if (event.eventType === EventType.LOGOUT_SUCCESS) {
+                setUser(null);
+                setIsAuthenticated(false);
+            }
 
-      // If silent token acquisition fails, try popup
-      try {
-        const response = await msalInstance.acquireTokenPopup(loginRequest);
-        return response.accessToken;
-      } catch (popupError) {
-        console.error('Token popup error:', popupError);
-        return null;
-      }
-    }
-  };
+            if (event.eventType === EventType.LOGIN_FAILURE) {
+                console.error('Login failed:', event.error);
+            }
 
-  const value: AuthContextType = {
-    isAuthenticated,
-    user,
-    loading,
-    login,
-    logout,
-    getAccessToken,
-  };
+            if (event.eventType === EventType.ACQUIRE_TOKEN_FAILURE) {
+                console.error('Token acquisition failed:', event.error);
+            }
+        });
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+        return () => {
+            if (callbackId) {
+                msalInstance.removeEventCallback(callbackId);
+            }
+        };
+    }, []);
+
+    const login = async () => {
+        try {
+            setLoading(true);
+            const loginResponse = await msalInstance.loginPopup(loginRequest);
+            msalInstance.setActiveAccount(loginResponse.account);
+            setUser(loginResponse.account);
+            setIsAuthenticated(true);
+        } catch (error) {
+            console.error('Login error:', error);
+            throw error;
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const logout = async () => {
+        try {
+            setLoading(true);
+            await msalInstance.logoutPopup({
+                mainWindowRedirectUri: '/',
+            });
+            setUser(null);
+            setIsAuthenticated(false);
+        } catch (error) {
+            console.error('Logout error:', error);
+            throw error;
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const value: AuthContextType = {
+        isAuthenticated,
+        user,
+        loading,
+        login,
+        logout,
+        getAccessToken,
+    };
+
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-/**
- * Custom hook to access authentication context
- */
 export const useAuth = (): AuthContextType => {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
+    const context = useContext(AuthContext);
+    if (context === undefined) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
 };
+
+
 
