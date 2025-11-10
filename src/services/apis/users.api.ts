@@ -7,7 +7,7 @@ export const userApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getUsers: builder.query<TSimpleUser[], void>({
             query: () => ({
-                url: '/app-users/filter',
+                url: `/${UserBaseUrl}/filter`,
                 method: 'POST',
             }),
         }),
