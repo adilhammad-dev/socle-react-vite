@@ -11,7 +11,7 @@ Located in `default/component/` folder, used for all component types (components
 **Files:**
 
 - `TemplateName.tsx` - Main component template
-- `TemplateName.styled.tsx` - Styled-components template
+- `TemplateName.styled.ts` - Styled-components template
 - `index.ts` - Index/export template
 
 ## Usage

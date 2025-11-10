@@ -1,7 +1,3 @@
-/**
- * Azure AD Authentication Configuration
- */
-
 import type {Configuration, PopupRequest, RedirectRequest} from '@azure/msal-browser';
 
 const tenantId = import.meta.env.VITE_AUTH_MSAL_TENANT_ID || '';

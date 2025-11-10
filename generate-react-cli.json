@@ -5,8 +5,8 @@
   "component": {
     "default": {
       "customTemplates": {
-        "component": "templates/default/component/index.tsx",
-        "style": "templates/default/component/TemplateName.styled.tsx"
+        "component": "src/templates/default/component/index.tsx",
+        "style": "src/templates/default/component/TemplateName.styled.ts"
       },
       "path": "src/components",
       "withStyle": true,
@@ -17,8 +17,8 @@
     },
     "container": {
       "customTemplates": {
-        "component": "templates/default/component/index.tsx",
-        "style": "templates/default/component/TemplateName.styled.tsx"
+        "component": "src/templates/default/component/index.tsx",
+        "style": "src/templates/default/component/TemplateName.styled.ts"
       },
       "path": "src/containers",
       "withStyle": true,
@@ -29,8 +29,8 @@
     },
     "page": {
       "customTemplates": {
-        "component": "templates/default/component/index.tsx",
-        "style": "templates/default/component/TemplateName.styled.tsx"
+        "component": "src/templates/default/component/index.tsx",
+        "style": "src/templates/default/component/TemplateName.styled.ts"
       },
       "path": "src/pages",
       "withStyle": true,

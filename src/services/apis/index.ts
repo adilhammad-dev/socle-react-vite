@@ -1,9 +1,3 @@
-/**
- * RTK Query API Configuration
- *
- * Uses customRequest from axios.ts for automatic Bearer token injection
- */
-
 import {createApi} from '@reduxjs/toolkit/query/react';
 import type {BaseQueryFn} from '@reduxjs/toolkit/query';
 import type {AxiosError, AxiosRequestConfig} from 'axios';

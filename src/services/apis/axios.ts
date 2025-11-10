@@ -35,8 +35,8 @@ customRequest.interceptors.request.use(
 customRequest.interceptors.response.use(
     (response) => response,
     async (error) => {
-        if (error.response?.status === 401 && !window.location.pathname.includes('/login')) {
-            window.location.href = '/login';
+        if (error.response?.status === 401 && !window.location.pathname.includes('/users')) {
+            window.location.href = '/users';
         }
         return Promise.reject(error);
     }

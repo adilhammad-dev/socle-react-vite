@@ -17,7 +17,6 @@ interface GlobalConfigType {
     };
 }
 
-// clientId per environment
 const clientId =
     window.azureConfig?.clientID ?? import.meta.env.VITE_AUTH_MSAL_CLIENT_ID ?? '';
 const scope = `${clientId}/${import.meta.env.VITE_AUTH_MSAL_SCOPE}`;

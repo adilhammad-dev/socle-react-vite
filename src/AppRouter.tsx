@@ -2,19 +2,20 @@ import {Suspense} from 'react';
 import {BrowserRouter, Routes} from 'react-router-dom';
 import {CssBaseline, ThemeProvider as MuiThemeProvider} from '@mui/material';
 import {ThemeProvider as StyledThemeProvider} from 'styled-components';
+import {AuthenticatedTemplate, UnauthenticatedTemplate, useMsal} from '@azure/msal-react';
+import {InteractionStatus} from '@azure/msal-browser';
 import {darkTheme, lightTheme} from 'theme';
 import {AppContainer, GlobalStyle, MainContent} from './GlobalStyle';
-import {Footer} from 'components/router';
 import LoadingPage from 'pages/LoadingPage';
 import LoginPage from 'pages/LoginPage';
 import {appRoutes} from 'routes/AppRoutes';
 import {useThemeMode} from 'hooks/useRouterState';
-import {useAuth} from 'contexts/AuthContext';
 
 function AppRouter() {
     const {themeMode} = useThemeMode();
-    const {isAuthenticated, loading} = useAuth();
+    const {inProgress} = useMsal();
     const currentTheme = themeMode === 'light' ? lightTheme : darkTheme;
+
 
     return (
         <MuiThemeProvider theme={currentTheme}>
@@ -22,22 +23,26 @@ function AppRouter() {
                 <CssBaseline/>
                 <GlobalStyle/>
                 <BrowserRouter future={{v7_relativeSplatPath: true, v7_startTransition: true}}>
-                    {loading ? (
+                    {inProgress === InteractionStatus.Startup || inProgress === InteractionStatus.HandleRedirect ? (
                         <LoadingPage/>
-                    ) : !isAuthenticated ? (
-                        <Suspense fallback={<LoadingPage/>}>
-                            <LoginPage/>
-                        </Suspense>
                     ) : (
-                        <AppContainer>
-                            <MainContent>
+                        <>
+                            <UnauthenticatedTemplate>
                                 <Suspense fallback={<LoadingPage/>}>
-                                    <Routes>{appRoutes}</Routes>
+                                    <LoginPage/>
                                 </Suspense>
-                            </MainContent>
+                            </UnauthenticatedTemplate>
 
-                            <Footer/>
-                        </AppContainer>
+                            <AuthenticatedTemplate>
+                                <AppContainer>
+                                    <MainContent>
+                                        <Suspense fallback={<LoadingPage/>}>
+                                            <Routes>{appRoutes}</Routes>
+                                        </Suspense>
+                                    </MainContent>
+                                </AppContainer>
+                            </AuthenticatedTemplate>
+                        </>
                     )}
                 </BrowserRouter>
             </StyledThemeProvider>
