@@ -34,6 +34,7 @@ export default defineConfig(({mode}) => {
                 'theme': fileURLToPath(new URL('./src/theme', import.meta.url)),
                 'config': fileURLToPath(new URL('./src/config', import.meta.url)),
                 'api': fileURLToPath(new URL('./src/api', import.meta.url)),
+                'providers': fileURLToPath(new URL('./src/providers', import.meta.url)),
             },
         },
     }

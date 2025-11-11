@@ -1,6 +1,4 @@
-export * from './AuthContext';
-export { default as AuthProvider } from './AuthProvider';
-export {
-  default as withAuthenticationRequired,
-  ProtectedComponent,
-} from './withAuthenticationRequired';
+export {default as AuthProvider} from './AuthProvider';
+export {AuthContext} from './AuthContext';
+export type {AuthContextProps, User} from './types';
+

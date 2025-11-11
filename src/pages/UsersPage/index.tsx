@@ -1,11 +1,23 @@
 import UsersList from 'containers/Users';
-import {ContentCard, PageContainer, PageHeader, PageSubtitle, PageTitle, PageWrapper} from './UsersPage.styled';
+import UserProfile from 'components/auth/UserProfile';
+import {
+    ContentCard,
+    HeaderActions,
+    PageContainer,
+    PageHeader,
+    PageSubtitle,
+    PageTitle,
+    PageWrapper
+} from './UsersPage.styled';
 
 export const UsersPage = () => {
     return (
         <PageWrapper>
             <PageContainer>
                 <PageHeader>
+                    <HeaderActions>
+                        <UserProfile/>
+                    </HeaderActions>
                     <PageTitle>Users Administration</PageTitle>
                     <PageSubtitle>
                         View and manage all users of the application

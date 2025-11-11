@@ -1,7 +1,6 @@
 import {PublicClientApplication} from '@azure/msal-browser';
-import {loginRequest, msalConfig, tokenRequest} from 'config/authConfig';
+import {msalConfig} from "providers/auth-provider/authConfig.ts";
 
 export const msalInstance = new PublicClientApplication(msalConfig);
 
 export default msalInstance;
-export {loginRequest, tokenRequest, msalConfig};

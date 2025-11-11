@@ -1,5 +1,6 @@
 import {useIsAuthenticated, useMsal} from '@azure/msal-react';
 import {Button} from 'components/ui';
+import ThemeToggle from 'components/ThemeToggle';
 import styled from 'styled-components';
 import type {Theme} from '@mui/material/styles';
 
@@ -86,6 +87,7 @@ export function UserProfile() {
                 <UserName>{user.name || 'User'}</UserName>
                 <UserEmail>{user.username}</UserEmail>
             </UserDetails>
+            <ThemeToggle/>
             <LogoutButton variant="secondary" size="small" onClick={handleLogout}>
                 Logout
             </LogoutButton>

@@ -1,13 +1,15 @@
-/**
- * Users Page - Styled Components
- */
-
 import styled from 'styled-components';
+import type {Theme} from '@mui/material/styles';
 
 export const PageWrapper = styled.div`
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 40px 20px;
+    background: ${({theme}: { theme: Theme }) =>
+            theme.palette.mode === 'dark'
+                    ? `linear-gradient(135deg, ${theme.palette.grey[900]} 0%, ${theme.palette.grey[800]} 100%)`
+                    : `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`
+    };
+    padding: ${({theme}: { theme: Theme }) => theme.spacing(5, 2.5)};
+    transition: background 0.3s ease;
 `;
 
 export const PageContainer = styled.div`
@@ -16,28 +18,48 @@ export const PageContainer = styled.div`
 `;
 
 export const PageHeader = styled.header`
-    margin-bottom: 32px;
+    margin-bottom: ${({theme}: { theme: Theme }) => theme.spacing(4)};
     text-align: center;
+    position: relative;
+`;
+
+export const HeaderActions = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: ${({theme}: { theme: Theme }) => theme.spacing(1)};
+    align-items: center;
 `;
 
 export const PageTitle = styled.h1`
-    color: white;
-    font-size: 48px;
-    font-weight: 700;
-    margin: 0 0 16px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color: ${({theme}: { theme: Theme }) => theme.palette.primary.contrastText};
+    font-size: ${({theme}: { theme: Theme }) => theme.typography.h2.fontSize};
+    font-weight: ${({theme}: { theme: Theme }) => theme.typography.h2.fontWeight};
+    font-family: ${({theme}: { theme: Theme }) => theme.typography.h2.fontFamily};
+    margin: 0 0 ${({theme}: { theme: Theme }) => theme.spacing(2)} 0;
+    text-shadow: ${({theme}: { theme: Theme }) =>
+            theme.palette.mode === 'dark'
+                    ? '2px 2px 8px rgba(0, 0, 0, 0.5)'
+                    : '2px 2px 4px rgba(0, 0, 0, 0.2)'
+    };
 `;
 
 export const PageSubtitle = styled.p`
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 18px;
+    color: ${({theme}: { theme: Theme }) =>
+            theme.palette.mode === 'dark'
+                    ? 'rgba(255, 255, 255, 0.8)'
+                    : 'rgba(255, 255, 255, 0.9)'
+    };
+    font-size: ${({theme}: { theme: Theme }) => theme.typography.body1.fontSize};
     margin: 0;
 `;
 
 export const ContentCard = styled.div`
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    background: ${({theme}: { theme: Theme }) => theme.palette.background.paper};
+    border-radius: ${({theme}: { theme: Theme }) => `${theme.shape.borderRadius}px`};
+    box-shadow: ${({theme}: { theme: Theme }) => theme.shadows[10]};
     overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 `;
 

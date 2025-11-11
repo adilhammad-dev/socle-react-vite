@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {
     AuthenticatedTemplate,
@@ -10,25 +9,14 @@ import {
 import type {AccountInfo} from '@azure/msal-browser';
 import {CacheLookupPolicy, InteractionRequiredAuthError, InteractionStatus,} from '@azure/msal-browser';
 import {security} from 'services/internals/security';
-import {createTheme, ThemeProvider} from '@mui/material/styles';
-// eslint-disable-next-line import/no-cycle
 import LoginPage from 'pages/LoginPage';
-import {isDefined, isUndefined} from 'utils/helpers/validation';
-import msalInstance, {loginRequest, tokenRequest} from 'utils/auth/authProvider';
+import LoadingPage from 'pages/LoadingPage';
+import {isDefined, isUndefined} from 'utils/validation.ts';
+import msalInstance from 'utils/auth/authProvider';
 import {AuthContext} from '../AuthContext';
 import type {AuthContextProps, User} from '../types';
+import {loginRequest, tokenRequest} from '../authConfig';
 
-// *** MSAL Config *** //
-msalInstance
-    .handleRedirectPromise()
-    .then((response) => {
-        if (response != null) {
-            msalInstance.setActiveAccount(response.account);
-        }
-    })
-    .catch(() => {
-    });
-// eslint-disable no-console
 const CustomAuthProvider: React.FC<React.PropsWithChildren> = function ({children}) {
     const [idToken, setIdToken] = useState<string>();
     const [_user, setUser] = useState<User>();
@@ -170,17 +158,43 @@ const CustomAuthProvider: React.FC<React.PropsWithChildren> = function ({childre
     return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };
 
-const AuthMsalProvider: React.FC = function ({children}: React.PropsWithChildren) {
+interface AuthMsalProviderProps {
+    children?: React.ReactNode;
+}
+
+const MsalInitializer = ({children}: AuthMsalProviderProps) => {
+    const [isInitialized, setIsInitialized] = useState(false);
+
+    useEffect(() => {
+        msalInstance.initialize()
+            .then(() => msalInstance.handleRedirectPromise())
+            .then(() => {
+                setIsInitialized(true);
+            })
+            .catch((error) => {
+                console.error('Failed to initialize MSAL:', error);
+            });
+    }, []);
+
+    if (!isInitialized) {
+        return <LoadingPage/>;
+    }
+
+    return <>{children}</>;
+};
+
+const AuthMsalProvider = ({children}: AuthMsalProviderProps) => {
     return (
-        <MsalProvider instance={msalInstance}>
-            <ThemeProvider theme={createTheme({palette: {mode: 'light'}})}> <CustomAuthProvider>
-                <UnauthenticatedTemplate>
-                    <LoginPage/>
-                </UnauthenticatedTemplate>
-                <AuthenticatedTemplate>{children}</AuthenticatedTemplate>
-            </CustomAuthProvider>
-            </ThemeProvider>
-        </MsalProvider>
+        <MsalInitializer>
+            <MsalProvider instance={msalInstance}>
+                <CustomAuthProvider>
+                    <UnauthenticatedTemplate>
+                        <LoginPage/>
+                    </UnauthenticatedTemplate>
+                    <AuthenticatedTemplate>{children}</AuthenticatedTemplate>
+                </CustomAuthProvider>
+            </MsalProvider>
+        </MsalInitializer>
     );
 };
 

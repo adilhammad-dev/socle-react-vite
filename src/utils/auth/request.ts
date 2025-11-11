@@ -1,11 +1,12 @@
 import type {AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig} from 'axios';
 import axios from 'axios';
 import {InteractionRequiredAuthError, PublicClientApplication} from '@azure/msal-browser';
-import msalInstance, {tokenRequest} from './authProvider';
+import msalInstance from './authProvider';
+import {tokenRequest} from "providers/auth-provider/authConfig.ts";
 
 const request: AxiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_BASE_URL || process.env.REACT_APP_BACKEND_BASE_URL,
-    timeout: Number(import.meta.env.VITE_TIMEOUT || process.env.TIMEOUT) || 30000,
+    baseURL: import.meta.env.VITE_BACKEND_BASE_URL,
+    timeout: Number(import.meta.env.VITE_TIMEOUT) || 30000,
     headers: {
         'Content-Type': 'application/json',
     },
