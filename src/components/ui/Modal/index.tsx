@@ -1,4 +1,4 @@
-import {ReactNode} from 'react';
+import {type ReactNode} from 'react';
 import {DialogActions, DialogContent, IconButton, Typography} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import {DialogTitleContainer, StyledDialog} from './Modal.styled';
@@ -13,7 +13,7 @@ interface ModalProps {
     fullWidth?: boolean;
     showCloseButton?: boolean;
 }
-
+ 
 const Modal = ({
                    open,
                    onClose,

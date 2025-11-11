@@ -1,15 +1,56 @@
 {
-  "extends": "../tsconfig.node.json",
   "compilerOptions": {
-    "types": [
-      "node"
-    ]
+    // Target & Module
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    // JSX Support
+    "jsx": "react-jsx",
+
+    // Type Checking - Relaxed for Storybook
+    "strict": false,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+
+    // Module Resolution
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    // Emit
+    "noEmit": true,
+
+    // Types
+    "types": ["node", "vite/client"],
+
+    // Path Aliases
+    "baseUrl": "../src",
+    "paths": {
+      "@/*": ["./*"],
+      "services/*": ["./services/*"],
+      "components/*": ["./components/*"],
+      "containers/*": ["./containers/*"],
+      "pages/*": ["./pages/*"],
+      "routes/*": ["./routes/*"],
+      "types/*": ["./types/*"],
+      "utils/*": ["./utils/*"],
+      "hooks/*": ["./hooks/*"],
+      "theme/*": ["./theme/*"]
+    }
   },
   "include": [
-    "*.ts",
-    "*.tsx",
+    "./**/*.ts",
+    "./**/*.tsx",
     "../src/**/*.stories.ts",
     "../src/**/*.stories.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "../node_modules",
+    "storybook-static"
   ]
 }
 

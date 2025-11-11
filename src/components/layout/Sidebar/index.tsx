@@ -25,7 +25,7 @@ export interface SidebarItem {
     badge?: number | string;
 }
 
-interface SidebarProps {
+export interface SidebarProps {
     open: boolean;
     onClose: () => void;
     items?: SidebarItem[];

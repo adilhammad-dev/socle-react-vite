@@ -1,3 +1,4 @@
+import React from 'react';
 import type {Preview} from '@storybook/react';
 import {create} from '@storybook/theming';
 import {CssBaseline, ThemeProvider as MuiThemeProvider} from '@mui/material';
@@ -63,7 +64,7 @@ const preview: Preview = {
         backgrounds: {
             disable: true,
         },
-        layout: 'centered',
+        layout: 'padded',
         docs: {
             theme: storybookLightTheme,
             source: {
