@@ -88,6 +88,9 @@ export const Default: Story = {
         isLoading: false,
         isDisabled: false,
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {

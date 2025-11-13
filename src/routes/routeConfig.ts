@@ -1,9 +1,5 @@
 export const protectedRoutes = [
     '/',
-    '/users',
-    '/feedback-components',
-    '/components-demo',
-    '/navigation-overlay-demo',
 ];
 
 export const publicRoutes = [

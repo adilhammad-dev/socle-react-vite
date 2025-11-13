@@ -67,6 +67,7 @@ export const Default: Story = {
         </div>
     ),
     parameters: {
+        controls: {disable: true},
         layout: 'padded',
         docs: {
             story: {
@@ -300,26 +301,3 @@ export const FormExample: Story = {
     },
 };
 
-export const Interactive: Story = {
-    args: {
-        placeholder: 'Select options...',
-        size: 'md',
-        isDisabled: false,
-    },
-    render: (args) => (
-        <div style={{width: '280px'}}>
-            <MultiSelect
-                {...args}
-                options={sampleOptions}
-            />
-        </div>
-    ),
-    parameters: {
-        docs: {
-            source: {
-                state: 'open',
-                type: 'dynamic',
-            },
-        },
-    },
-};

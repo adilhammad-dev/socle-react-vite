@@ -63,6 +63,9 @@ export const Default: Story = {
             <Slider {...args} />
         </div>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -295,20 +298,3 @@ export const ApplicationExamples: Story = {
     },
 };
 
-export const Interactive: Story = {
-    args: {
-        min: 0,
-        max: 100,
-        step: 1,
-        defaultValue: 50,
-        isDisabled: false,
-        size: 'md',
-        colorScheme: 'blue',
-    },
-    render: (args) => (
-        <div style={{width: '300px'}}>
-            <FormLabel>Interactive Slider</FormLabel>
-            <Slider {...args} />
-        </div>
-    ),
-};

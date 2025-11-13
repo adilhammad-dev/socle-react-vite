@@ -47,6 +47,9 @@ export const Default: Story = {
     args: {
         placeholder: 'Enter your password',
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -177,18 +180,3 @@ export const FormExample: Story = {
     },
 };
 
-export const Interactive: Story = {
-    args: {
-        placeholder: 'Interactive password field',
-        size: 'md',
-        variant: 'outline',
-        isDisabled: false,
-        isInvalid: false,
-    },
-    render: (args) => (
-        <div style={{width: '300px'}}>
-            <FormLabel>Password</FormLabel>
-            <PasswordField {...args} />
-        </div>
-    ),
-};

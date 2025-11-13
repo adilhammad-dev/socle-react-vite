@@ -44,6 +44,9 @@ export const Default: Story = {
             <Text>Content below the divider</Text>
         </Box>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Horizontal: Story = {
@@ -236,17 +239,3 @@ export const SectionSeparators: Story = {
     },
 };
 
-export const Interactive: Story = {
-    args: {
-        orientation: 'horizontal',
-        variant: 'solid',
-        colorScheme: 'gray',
-    },
-    render: (args) => (
-        <Box width="300px">
-            <Text mb={4}>Content above</Text>
-            <Divider {...args} />
-            <Text mt={4}>Content below</Text>
-        </Box>
-    ),
-};

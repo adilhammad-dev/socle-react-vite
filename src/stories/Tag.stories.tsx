@@ -43,6 +43,9 @@ export const Default: Story = {
             <TagLabel>Default Tag</TagLabel>
         </Tag>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -309,15 +312,3 @@ export const ApplicationExamples: Story = {
     },
 };
 
-export const Interactive: Story = {
-    args: {
-        size: 'md',
-        variant: 'subtle',
-        colorScheme: 'blue',
-    },
-    render: (args) => (
-        <Tag {...args}>
-            <TagLabel>Interactive Tag</TagLabel>
-        </Tag>
-    ),
-};

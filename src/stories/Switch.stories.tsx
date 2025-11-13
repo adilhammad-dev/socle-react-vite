@@ -46,6 +46,9 @@ export const Default: Story = {
     args: {
         children: 'Enable notifications',
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -73,6 +76,9 @@ export const Sizes: Story = {
             </FormControl>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const ColorSchemes: Story = {
@@ -109,6 +115,9 @@ export const ColorSchemes: Story = {
             </FormControl>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const States: Story = {
@@ -145,6 +154,9 @@ export const States: Story = {
             </FormControl>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithForm: Story = {
@@ -192,6 +204,9 @@ export const WithForm: Story = {
             </Stack>
         );
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Controlled: Story = {
@@ -217,23 +232,8 @@ export const Controlled: Story = {
             </Stack>
         );
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
-export const Interactive: Story = {
-    args: {
-        size: 'md',
-        colorScheme: 'blue',
-        isChecked: false,
-        isDisabled: false,
-        isReadOnly: false,
-        isInvalid: false,
-    },
-    render: (args) => (
-        <FormControl display="flex" alignItems="center">
-            <FormLabel htmlFor="interactive-switch" mb="0">
-                Interactive Switch
-            </FormLabel>
-            <Switch id="interactive-switch" {...args} />
-        </FormControl>
-    ),
-};

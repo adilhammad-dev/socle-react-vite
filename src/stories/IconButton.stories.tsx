@@ -47,6 +47,9 @@ export const Default: Story = {
         'aria-label': 'Email',
         icon: <FaEnvelope/>,
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -58,6 +61,9 @@ export const Sizes: Story = {
             <IconButton aria-label="Large" icon={<FaHeart/>} size="lg"/>
         </div>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const ColorSchemes: Story = {
@@ -71,6 +77,9 @@ export const ColorSchemes: Story = {
             <IconButton aria-label="Teal" icon={<FaHeart/>} colorScheme="teal"/>
         </div>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Variants: Story = {
@@ -81,6 +90,9 @@ export const Variants: Story = {
             <IconButton aria-label="Ghost" icon={<FaCog/>} variant="ghost" colorScheme="blue"/>
         </div>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Shapes: Story = {
@@ -90,6 +102,9 @@ export const Shapes: Story = {
             <IconButton aria-label="Round" icon={<FaPlus/>} colorScheme="blue" isRound/>
         </div>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Actions: Story = {
@@ -101,6 +116,9 @@ export const Actions: Story = {
             <IconButton aria-label="Settings" icon={<FaCog/>} colorScheme="gray"/>
         </div>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const States: Story = {
@@ -111,17 +129,8 @@ export const States: Story = {
             <IconButton aria-label="Disabled" icon={<FaHeart/>} colorScheme="blue" isDisabled/>
         </div>
     ),
-};
-
-export const Interactive: Story = {
-    args: {
-        'aria-label': 'Interactive icon button',
-        icon: <FaEnvelope/>,
-        colorScheme: 'blue',
-        size: 'md',
-        variant: 'solid',
-        isRound: false,
-        isLoading: false,
-        isDisabled: false,
+    parameters: {
+        controls: {disable: true},
     },
 };
+

@@ -53,6 +53,9 @@ export const Sizes: Story = {
             <Radio size="lg">Large radio</Radio>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const ColorSchemes: Story = {
@@ -66,6 +69,9 @@ export const ColorSchemes: Story = {
             <Radio colorScheme="teal" name="colors">Teal</Radio>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const States: Story = {
@@ -78,6 +84,9 @@ export const States: Story = {
             <Radio name="states5" isInvalid>Invalid</Radio>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const RadioGroupExample: Story = {
@@ -94,6 +103,9 @@ export const RadioGroupExample: Story = {
             </RadioGroup>
         );
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const HorizontalGroup: Story = {
@@ -106,6 +118,9 @@ export const HorizontalGroup: Story = {
             </Stack>
         </RadioGroup>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const NestedOptions: Story = {
@@ -124,15 +139,7 @@ export const NestedOptions: Story = {
             </RadioGroup>
         </VStack>
     ),
-};
-
-export const Interactive: Story = {
-    args: {
-        children: 'Interactive radio',
-        size: 'md',
-        colorScheme: 'blue',
-        isChecked: false,
-        isDisabled: false,
-        isInvalid: false,
+    parameters: {
+        controls: {disable: true},
     },
 };

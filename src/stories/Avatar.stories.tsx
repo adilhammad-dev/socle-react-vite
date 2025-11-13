@@ -38,6 +38,9 @@ export const Default: Story = {
     args: {
         name: 'John Doe',
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -52,6 +55,9 @@ export const Sizes: Story = {
             <Avatar size="2xl" name="John Doe"/>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithImage: Story = {
@@ -74,6 +80,9 @@ export const WithImage: Story = {
             />
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Fallback: Story = {
@@ -87,6 +96,9 @@ export const Fallback: Story = {
             <Avatar/>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithBorder: Story = {
@@ -97,6 +109,9 @@ export const WithBorder: Story = {
             <Avatar name="Robert Johnson" showBorder borderColor="green.500"/>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const AvatarGroupStory: Story = {
@@ -135,6 +150,9 @@ export const AvatarGroupStory: Story = {
             </div>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Colors: Story = {
@@ -160,13 +178,8 @@ export const Colors: Story = {
             </WrapItem>
         </Wrap>
     ),
-};
-
-export const Interactive: Story = {
-    args: {
-        name: 'Interactive Avatar',
-        size: 'md',
-        showBorder: false,
-        src: '',
+    parameters: {
+        controls: {disable: true},
     },
 };
+

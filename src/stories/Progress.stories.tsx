@@ -45,6 +45,9 @@ export const Default: Story = {
     args: {
         value: 64,
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -68,6 +71,9 @@ export const Sizes: Story = {
             </Box>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const ColorSchemes: Story = {
@@ -99,6 +105,9 @@ export const ColorSchemes: Story = {
             </Box>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithStripes: Story = {
@@ -118,6 +127,9 @@ export const WithStripes: Story = {
             </Box>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Indeterminate: Story = {
@@ -137,6 +149,9 @@ export const Indeterminate: Story = {
             </Box>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithLabels: Story = {
@@ -161,6 +176,9 @@ export const WithLabels: Story = {
             </Box>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const DifferentValues: Story = {
@@ -188,15 +206,8 @@ export const DifferentValues: Story = {
             </Box>
         </Stack>
     ),
-};
-
-export const Interactive: Story = {
-    args: {
-        value: 64,
-        size: 'md',
-        colorScheme: 'blue',
-        hasStripe: false,
-        isAnimated: false,
-        isIndeterminate: false,
+    parameters: {
+        controls: {disable: true},
     },
 };
+

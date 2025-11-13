@@ -39,6 +39,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {},
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -66,6 +69,9 @@ export const Sizes: Story = {
             </Flex>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Colors: Story = {
@@ -118,6 +124,9 @@ export const Colors: Story = {
             </Stack>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const CustomStyles: Story = {
@@ -139,6 +148,9 @@ export const CustomStyles: Story = {
             </Stack>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithText: Story = {
@@ -160,6 +172,9 @@ export const WithText: Story = {
             </Flex>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Centered: Story = {
@@ -178,6 +193,9 @@ export const Centered: Story = {
             </Flex>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const InButton: Story = {
@@ -232,14 +250,8 @@ export const InButton: Story = {
             </button>
         </Stack>
     ),
-};
-
-export const Interactive: Story = {
-    args: {
-        size: 'md',
-        color: 'blue.500',
-        thickness: '4px',
-        speed: '0.65s',
-        emptyColor: 'gray.200',
+    parameters: {
+        controls: {disable: true},
     },
 };
+

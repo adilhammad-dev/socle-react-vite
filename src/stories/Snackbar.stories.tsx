@@ -204,13 +204,3 @@ export const Customization: Story = {
         controls: {disable: true},
     },
 };
-
-export const Interactive: Story = {
-    args: {
-        message: 'Interactive toast message',
-        status: 'info',
-        duration: 5000,
-        isClosable: true,
-    },
-    render: (args) => <Snackbar message={args.message} {...args} />,
-};

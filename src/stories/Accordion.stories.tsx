@@ -71,6 +71,9 @@ export const Default: Story = {
             </AccordionItem>
         </Accordion>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const SingleAllowed: Story = {
@@ -164,41 +167,3 @@ export const FAQ: Story = {
     },
 };
 
-export const Interactive: Story = {
-    args: {
-        allowMultiple: true,
-        allowToggle: true,
-        defaultIndex: 0,
-    },
-    render: (args) => (
-        <Accordion {...args} width="400px">
-            <AccordionItem>
-                <h2>
-                    <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
-                            Interactive Section 1
-                        </Box>
-                        <AccordionIcon/>
-                    </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                    This accordion section can be controlled using the controls panel.
-                </AccordionPanel>
-            </AccordionItem>
-
-            <AccordionItem>
-                <h2>
-                    <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
-                            Interactive Section 2
-                        </Box>
-                        <AccordionIcon/>
-                    </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                    Experiment with the allowMultiple and allowToggle properties.
-                </AccordionPanel>
-            </AccordionItem>
-        </Accordion>
-    ),
-};

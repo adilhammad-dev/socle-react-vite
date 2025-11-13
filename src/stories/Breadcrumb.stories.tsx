@@ -40,6 +40,9 @@ export const Default: Story = {
             </BreadcrumbItem>
         </Breadcrumb>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithCustomSeparator: Story = {
@@ -172,21 +175,3 @@ export const ApplicationExample: Story = {
     },
 };
 
-export const Interactive: Story = {
-    args: {
-        spacing: '8px',
-    },
-    render: (args) => (
-        <Breadcrumb {...args}>
-            <BreadcrumbItem>
-                <BreadcrumbLink href="#">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-                <BreadcrumbLink href="#">Components</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink href="#">Interactive</BreadcrumbLink>
-            </BreadcrumbItem>
-        </Breadcrumb>
-    ),
-};

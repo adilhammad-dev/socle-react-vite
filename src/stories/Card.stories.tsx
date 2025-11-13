@@ -57,6 +57,9 @@ export const Default: Story = {
             </>
         ),
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithImage: Story = {
@@ -93,6 +96,9 @@ export const WithImage: Story = {
             </CardFooter>
         </Card>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -126,6 +132,9 @@ export const Sizes: Story = {
             </Card>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Variants: Story = {
@@ -159,6 +168,9 @@ export const Variants: Story = {
             </Card>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Horizontal: Story = {
@@ -193,6 +205,9 @@ export const Horizontal: Story = {
             </Stack>
         </Card>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Simple: Story = {
@@ -223,26 +238,10 @@ export const Simple: Story = {
             </Card>
         </Stack>
     ),
-};
-
-export const Interactive: Story = {
-    args: {
-        size: 'md',
-        variant: 'outline',
-        children: (
-            <>
-                <CardHeader>
-                    <Heading size="md">Interactive Card</Heading>
-                </CardHeader>
-                <CardBody>
-                    <Text>Customize this card using the controls below.</Text>
-                </CardBody>
-                <CardFooter>
-                    <Button colorScheme="blue">Action Button</Button>
-                </CardFooter>
-            </>
-        ),
+    parameters: {
+        controls: {disable: true},
     },
 };
- 
+
+
 

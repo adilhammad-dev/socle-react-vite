@@ -186,6 +186,9 @@ export const CheckboxGroupExample: Story = {
             </VStack>
         );
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const MultipleCgroups: Story = {
@@ -199,25 +202,9 @@ export const MultipleCgroups: Story = {
             </Stack>
         </CheckboxGroup>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
-export const Interactive: Story = {
-    args: {
-        children: 'Interactive checkbox',
-        size: 'md',
-        colorScheme: 'blue',
-        isChecked: false,
-        isDisabled: false,
-        isIndeterminate: false,
-        isInvalid: false,
-    },
-    render: (args) => <Checkbox {...args} />,
-    parameters: {
-        docs: {
-            source: {
-                state: 'open',
-                type: 'dynamic',
-            },
-        },
-    },
-};
+

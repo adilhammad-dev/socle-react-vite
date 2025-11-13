@@ -78,6 +78,9 @@ export const Default: Story = {
             </>
         );
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -117,6 +120,9 @@ export const Sizes: Story = {
             </>
         );
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Centered: Story = {
@@ -142,6 +148,9 @@ export const Centered: Story = {
                 </Modal>
             </>
         );
+    },
+    parameters: {
+        controls: {disable: true},
     },
 };
 
@@ -216,6 +225,9 @@ export const ScrollBehavior: Story = {
             </>
         );
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const MotionPresets: Story = {
@@ -265,41 +277,9 @@ export const MotionPresets: Story = {
             </>
         );
     },
-};
-
-export const Interactive: Story = {
-    args: {
-        size: 'md',
-        isCentered: false,
-        scrollBehavior: 'inside',
-        motionPreset: 'slideInBottom',
-    },
-    render: (args) => {
-        const {isOpen, onOpen, onClose} = useDisclosure();
-
-        return (
-            <>
-                <Button onClick={onOpen}>Open Interactive Modal</Button>
-
-                <Modal {...args} isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay/>
-                    <ModalContent>
-                        <ModalHeader>Interactive Modal</ModalHeader>
-                        <ModalCloseButton/>
-                        <ModalBody>
-                            <Text>Customize this modal using the controls below.</Text>
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button colorScheme="blue" mr={3} onClick={onClose}>
-                                Save
-                            </Button>
-                            <Button variant="ghost" onClick={onClose}>
-                                Cancel
-                            </Button>
-                        </ModalFooter>
-                    </ModalContent>
-                </Modal>
-            </>
-        );
+    parameters: {
+        controls: {disable: true},
     },
 };
+
+

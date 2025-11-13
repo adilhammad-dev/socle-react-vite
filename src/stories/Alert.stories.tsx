@@ -39,6 +39,9 @@ export const Default: Story = {
             </>
         ),
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const StatusTypes: Story = {
@@ -120,6 +123,9 @@ export const Variants: Story = {
             </Alert>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithTitleAndDescription: Story = {
@@ -146,6 +152,9 @@ export const WithTitleAndDescription: Story = {
             </Alert>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithCloseButton: Story = {
@@ -168,6 +177,9 @@ export const WithCloseButton: Story = {
             </Alert>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const CustomContent: Story = {
@@ -185,30 +197,9 @@ export const CustomContent: Story = {
             </Alert>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
-export const Interactive: Story = {
-    args: {
-        status: 'info',
-        variant: 'subtle',
-    },
-    render: (args) => (
-        <Alert {...args}>
-            <AlertIcon/>
-            <Box>
-                <AlertTitle>Interactive Alert</AlertTitle>
-                <AlertDescription>
-                    You can customize this alert using the controls above.
-                </AlertDescription>
-            </Box>
-        </Alert>
-    ),
-    parameters: {
-        docs: {
-            source: {
-                state: 'open',
-                type: 'dynamic',
-            },
-        },
-    },
-};
+

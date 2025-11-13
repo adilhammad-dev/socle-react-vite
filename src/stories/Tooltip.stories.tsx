@@ -58,6 +58,9 @@ export const Default: Story = {
             <Button>Hover me</Button>
         </Tooltip>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Placements: Story = {
@@ -233,17 +236,3 @@ export const AlwaysOpen: Story = {
     },
 };
 
-export const Interactive: Story = {
-    args: {
-        label: 'Interactive tooltip',
-        placement: 'top',
-        hasArrow: true,
-        openDelay: 500,
-        closeDelay: 200,
-    },
-    render: (args) => (
-        <Tooltip {...args}>
-            <Button>Interactive Button</Button>
-        </Tooltip>
-    ),
-};

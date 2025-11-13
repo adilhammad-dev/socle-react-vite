@@ -67,6 +67,9 @@ export const Default: Story = {
             </TabPanels>
         </Tabs>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Variants: Story = {
@@ -303,36 +306,3 @@ export const ApplicationExample: Story = {
     },
 };
 
-export const Interactive: Story = {
-    args: {
-        variant: 'line',
-        colorScheme: 'blue',
-        size: 'md',
-        orientation: 'horizontal',
-        isLazy: false,
-    },
-    render: (args) => (
-        <Tabs {...args} width="400px">
-            <TabList>
-                <Tab>Interactive Tab 1</Tab>
-                <Tab>Interactive Tab 2</Tab>
-                <Tab>Interactive Tab 3</Tab>
-            </TabList>
-
-            <TabPanels>
-                <TabPanel>
-                    <Text>Interactive Panel 1</Text>
-                    <Text mt={2}>Customize this tab component using the controls below.</Text>
-                </TabPanel>
-                <TabPanel>
-                    <Text>Interactive Panel 2</Text>
-                    <Text mt={2}>Try different variants and color schemes to see how they look.</Text>
-                </TabPanel>
-                <TabPanel>
-                    <Text>Interactive Panel 3</Text>
-                    <Text mt={2}>You can also change the size and orientation of the tabs.</Text>
-                </TabPanel>
-            </TabPanels>
-        </Tabs>
-    ),
-};

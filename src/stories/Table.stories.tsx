@@ -89,6 +89,9 @@ export const Default: Story = {
             </Table>
         </TableContainer>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Variants: Story = {
@@ -154,6 +157,9 @@ export const Variants: Story = {
             </div>
         </div>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -220,6 +226,9 @@ export const Sizes: Story = {
             </div>
         </div>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithContent: Story = {
@@ -311,42 +320,8 @@ export const WithContent: Story = {
             </Table>
         </TableContainer>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
-export const Interactive: Story = {
-    args: {
-        variant: 'simple',
-        size: 'md',
-        colorScheme: 'gray',
-    },
-    render: (args) => (
-        <TableContainer>
-            <Table {...args}>
-                <Thead>
-                    <Tr>
-                        <Th>Product</Th>
-                        <Th>Price</Th>
-                        <Th>Stock</Th>
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    <Tr>
-                        <Td>Laptop</Td>
-                        <Td>$999</Td>
-                        <Td>25</Td>
-                    </Tr>
-                    <Tr>
-                        <Td>Mouse</Td>
-                        <Td>$29</Td>
-                        <Td>150</Td>
-                    </Tr>
-                    <Tr>
-                        <Td>Keyboard</Td>
-                        <Td>$79</Td>
-                        <Td>85</Td>
-                    </Tr>
-                </Tbody>
-            </Table>
-        </TableContainer>
-    ),
-};

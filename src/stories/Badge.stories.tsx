@@ -37,6 +37,9 @@ export const Default: Story = {
     args: {
         children: 'Default',
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const ColorSchemes: Story = {
@@ -115,6 +118,9 @@ export const Variants: Story = {
             </Badge>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -131,6 +137,9 @@ export const Sizes: Story = {
             </Badge>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const StatusBadges: Story = {
@@ -156,6 +165,9 @@ export const StatusBadges: Story = {
             </div>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithNumbers: Story = {
@@ -181,6 +193,9 @@ export const WithNumbers: Story = {
             </div>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const InText: Story = {
@@ -205,13 +220,8 @@ export const InText: Story = {
             </p>
         </Stack>
     ),
-};
-
-export const Interactive: Story = {
-    args: {
-        children: 'Interactive Badge',
-        colorScheme: 'blue',
-        variant: 'subtle',
-        size: 'md',
+    parameters: {
+        controls: {disable: true},
     },
 };
+

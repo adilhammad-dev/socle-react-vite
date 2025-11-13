@@ -56,6 +56,9 @@ export const Default: Story = {
             <Skeleton height="20px"/>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const SkeletonTypes: Story = {
@@ -85,6 +88,9 @@ export const SkeletonTypes: Story = {
             </Box>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const LoadingStates: Story = {
@@ -106,6 +112,9 @@ export const LoadingStates: Story = {
                 </Box>
             </Box>
         );
+    },
+    parameters: {
+        controls: {disable: true},
     },
 };
 
@@ -134,6 +143,9 @@ export const CardSkeleton: Story = {
             </CardFooter>
         </Card>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const UserProfileSkeleton: Story = {
@@ -162,6 +174,9 @@ export const UserProfileSkeleton: Story = {
             </Flex>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const ArticleSkeleton: Story = {
@@ -183,6 +198,9 @@ export const ArticleSkeleton: Story = {
             <SkeletonText noOfLines={8} spacing="4" skeletonHeight="3"/>
         </Box>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const CustomColors: Story = {
@@ -206,23 +224,8 @@ export const CustomColors: Story = {
             </Box>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
-export const Interactive: Story = {
-    args: {
-        isLoaded: false,
-        fadeDuration: 0.4,
-        speed: 0.8,
-        height: '20px',
-        width: '200px',
-    },
-    render: (args) => (
-        <Box>
-            <Skeleton {...args}>
-                <Box p={4} bg="blue.50" rounded="md">
-                    This content appears when isLoaded is true
-                </Box>
-            </Skeleton>
-        </Box>
-    ),
-};

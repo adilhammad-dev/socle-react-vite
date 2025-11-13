@@ -49,6 +49,9 @@ export const Default: Story = {
     args: {
         placeholder: 'Enter your message...',
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -60,6 +63,9 @@ export const Sizes: Story = {
             <Textarea placeholder="Large textarea" size="lg"/>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Variants: Story = {
@@ -71,6 +77,9 @@ export const Variants: Story = {
             <Textarea placeholder="Unstyled variant" variant="unstyled"/>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Resize: Story = {
@@ -82,6 +91,9 @@ export const Resize: Story = {
             <Textarea placeholder="No resize" resize="none"/>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const States: Story = {
@@ -94,6 +106,9 @@ export const States: Story = {
             <Textarea placeholder="Read only textarea" isReadOnly value="This content cannot be edited"/>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithRows: Story = {
@@ -104,17 +119,8 @@ export const WithRows: Story = {
             <Textarea placeholder="6 rows" rows={6}/>
         </Stack>
     ),
-};
-
-export const Interactive: Story = {
-    args: {
-        placeholder: 'Tell us about yourself...',
-        size: 'md',
-        variant: 'outline',
-        resize: 'vertical',
-        rows: 4,
-        isDisabled: false,
-        isReadOnly: false,
-        isInvalid: false,
+    parameters: {
+        controls: {disable: true},
     },
 };
+

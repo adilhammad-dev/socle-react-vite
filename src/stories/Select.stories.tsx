@@ -55,6 +55,9 @@ export const Default: Story = {
             </>
         ),
     },
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Sizes: Story = {
@@ -78,6 +81,9 @@ export const Sizes: Story = {
             </Select>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Variants: Story = {
@@ -101,6 +107,9 @@ export const Variants: Story = {
             </Select>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const States: Story = {
@@ -124,6 +133,9 @@ export const States: Story = {
             </Select>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const WithGroups: Story = {
@@ -143,6 +155,9 @@ export const WithGroups: Story = {
             </Select>
         </Stack>
     ),
+    parameters: {
+        controls: {disable: true},
+    },
 };
 
 export const Preselected: Story = {
@@ -155,24 +170,8 @@ export const Preselected: Story = {
             </Select>
         </Stack>
     ),
-};
-
-export const Interactive: Story = {
-    args: {
-        placeholder: 'Choose an option...',
-        size: 'md',
-        variant: 'outline',
-        isDisabled: false,
-        isInvalid: false,
-        focusBorderColor: 'blue.400',
-        errorBorderColor: 'red.300',
-        children: (
-            <>
-                <option value="apple">Apple</option>
-                <option value="banana">Banana</option>
-                <option value="orange">Orange</option>
-                <option value="grape">Grape</option>
-            </>
-        ),
+    parameters: {
+        controls: {disable: true},
     },
 };
+
