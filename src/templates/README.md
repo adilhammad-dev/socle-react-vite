@@ -12,7 +12,7 @@ Located in `default/component/` folder, used for all component types (components
 
 - `TemplateName.tsx` - Main component template
 - `TemplateName.styled.ts` - Styled-components template
-- `index.ts` - Index/export template
+- `index.tsx` - Index/export template
 
 ## Usage
 
@@ -36,7 +36,7 @@ The CLI will:
 3. Generate files in `src/components/UserProfile/`:
     - `UserProfile.tsx`
     - `UserProfile.styled.tsx`
-    - `index.ts`
+    - `index.tsx`
 
 ## Customization
 

@@ -1,24 +1,30 @@
-import {StrictMode} from 'react';
-import {createRoot} from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
-import store from 'services/store';
-import AuthProvider from './providers/auth-provider/AuthProvider';
-import App from './App';
-import './index.css';
 import {ChakraProvider} from '@chakra-ui/react';
-import theme from './theme';
-import {ThemeProvider} from 'styled-components';
+import {PublicClientApplication} from '@azure/msal-browser';
+import {MsalProvider} from '@azure/msal-react';
+import App from './App';
+import store from './services/store';
+import {msalConfig} from './providers/auth-provider/authConfig';
+import system from './theme';
+import {ColorModeProvider} from './theme/useColorMode';
+import './index.css';
 
-createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-        <Provider store={store}>
-            <ChakraProvider theme={theme}>
-                <ThemeProvider theme={theme}>
-                    <AuthProvider>
+
+// Create MSAL instance
+const msalInstance = new PublicClientApplication(msalConfig);
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+        <MsalProvider instance={msalInstance}>
+            <Provider store={store}>
+                <ChakraProvider value={system}>
+                    <ColorModeProvider>
                         <App/>
-                    </AuthProvider>
-                </ThemeProvider>
-            </ChakraProvider>
-        </Provider>
-    </StrictMode>,
+                    </ColorModeProvider>
+                </ChakraProvider>
+            </Provider>
+        </MsalProvider>
+    </React.StrictMode>,
 );

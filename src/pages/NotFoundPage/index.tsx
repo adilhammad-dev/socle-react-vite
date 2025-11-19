@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {Button} from 'components/ui';
+import StyledButton from 'components/ui/StyledButton';
 import {NotFoundCode, NotFoundContainer, NotFoundWrapper,} from './NotFoundPage.styled';
 import {Heading, Text, VStack} from "@chakra-ui/react";
 
@@ -7,7 +7,7 @@ export function NotFoundPage() {
     return (
         <NotFoundWrapper>
             <NotFoundContainer>
-                <VStack spacing={6} align="center">
+                <VStack align="center">
                     <NotFoundCode>404</NotFoundCode>
                     <Heading as="h1" size="xl" textAlign="center">
                         Page Not Found
@@ -16,9 +16,9 @@ export function NotFoundPage() {
                         The page you're looking for doesn't exist or has been moved.
                     </Text>
                     <Link to="/" style={{textDecoration: 'none'}}>
-                        <Button size="lg" colorScheme="blue">
+                        <StyledButton size="lg" colorScheme="blue">
                             Back to Home
-                        </Button>
+                        </StyledButton>
                     </Link>
                 </VStack>
             </NotFoundContainer>

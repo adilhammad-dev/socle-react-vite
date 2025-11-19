@@ -1,5 +1,6 @@
 export const protectedRoutes = [
     '/',
+    '/simple-user-form',
 ];
 
 export const publicRoutes = [

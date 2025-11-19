@@ -5,7 +5,7 @@ export function LoadingPage() {
     return (
         <LoadingWrapper>
             <LoadingContainer>
-                <VStack spacing={3} align="center">
+                <VStack align="center">
                     <SpinnerWrapper>
                         <LoadingDot $delay={0}/>
                         <LoadingDot $delay={0.2}/>

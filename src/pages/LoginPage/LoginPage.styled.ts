@@ -31,39 +31,6 @@ export const Title = styled.h1`
     margin-bottom: 2rem;
 `;
 
-export const LoginButton = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    width: 100%;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-
-    &:hover:not(:disabled) {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-        background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
-    }
-
-    &:active:not(:disabled) {
-        transform: translateY(0px);
-    }
-
-    &:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-        transform: none;
-    }
-`;
 
 export const ErrorMessage = styled.div`
     background: rgba(254, 215, 215, 0.9);

@@ -1,7 +1,7 @@
 import React from 'react';
 import type {Preview} from '@storybook/react';
 import {create} from '@storybook/theming';
-import {ChakraProvider, ColorModeScript} from '@chakra-ui/react';
+import {ChakraProvider} from '@chakra-ui/react';
 import {ThemeProvider as StyledThemeProvider} from 'styled-components';
 import theme from '../src/theme';
 
@@ -102,30 +102,35 @@ const preview: Preview = {
             // Détermine l'orientation
             const flexDirection = layout === 'stacked' ? 'column' : 'row';
 
+            // Set color mode in localStorage for V3 compatibility
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('chakra-ui-color-mode', colorMode);
+                document.documentElement.classList.remove('light', 'dark');
+                document.documentElement.classList.add(colorMode);
+                document.documentElement.setAttribute('data-theme', colorMode);
+            }
+
             return (
-                <>
-                    <ColorModeScript initialColorMode={colorMode}/>
-                    <ChakraProvider theme={{...theme, config: {...theme.config, initialColorMode: colorMode}}}>
-                        <StyledThemeProvider theme={theme}>
-                            <div
-                                style={{
-                                    backgroundColor,
-                                    minHeight: '10vh',
-                                    padding: '1rem',
-                                    display: 'flex',
-                                    flexDirection,
-                                    gap: '2rem',
-                                    flexWrap: 'wrap',
-                                }}
-                            >
-                                {/* Rendu multiple : argsList contient toutes les variantes si tu utilises Storybook args */}
-                                {context.argsList && context.argsList.length > 0
-                                    ? context.argsList.map((args, idx) => <Story key={idx} args={args}/>)
-                                    : <Story/>}
-                            </div>
-                        </StyledThemeProvider>
-                    </ChakraProvider>
-                </>
+                <ChakraProvider value={theme}>
+                    <StyledThemeProvider theme={theme}>
+                        <div
+                            style={{
+                                backgroundColor,
+                                minHeight: '10vh',
+                                padding: '1rem',
+                                display: 'flex',
+                                flexDirection,
+                                gap: '2rem',
+                                flexWrap: 'wrap',
+                            }}
+                        >
+                            {/* Rendu multiple : argsList contient toutes les variantes si tu utilises Storybook args */}
+                            {context.argsList && context.argsList.length > 0
+                                ? context.argsList.map((args, idx) => <Story key={idx} args={args}/>)
+                                : <Story/>}
+                        </div>
+                    </StyledThemeProvider>
+                </ChakraProvider>
             );
         },
     ],

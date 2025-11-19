@@ -6,9 +6,12 @@ import {AppContainer, MainContent} from './GlobalStyle';
 import LoadingPage from 'pages/LoadingPage';
 import LoginPage from 'pages/LoginPage';
 import {appRoutes} from 'routes/AppRoutes';
+import Header from 'components/layout/Header';
+import {useColorMode} from 'theme/useColorMode';
 
 function AppRouter() {
     const {inProgress} = useMsal();
+    const {colorMode} = useColorMode();
 
     return (
         <BrowserRouter future={{v7_relativeSplatPath: true, v7_startTransition: true}}>
@@ -24,7 +27,8 @@ function AppRouter() {
 
                     <AuthenticatedTemplate>
                         <AppContainer>
-                            <MainContent>
+                            <Header />
+                            <MainContent $colorMode={colorMode}>
                                 <Suspense fallback={<LoadingPage/>}>
                                     <Routes>{appRoutes}</Routes>
                                 </Suspense>
