@@ -7,10 +7,10 @@ export interface StyledButtonProps extends ButtonProps {
 }
 
 const StyledButton = forwardRef<HTMLButtonElement, StyledButtonProps>(
-    ({children = "Solid", variant = "solid", colorScheme = "blue", ...props}, ref) => {
+    ({children, variant = "solid", colorScheme, ...props}, ref) => {
         return (
             <StyledButtonWrapper>
-                <Button type="button" ref={ref} variant={variant} colorScheme={colorScheme} {...props}>
+                <Button type="button" ref={ref} variant={variant} colorScheme={colorScheme || "blue"} {...props}>
                     {children}
                 </Button>
             </StyledButtonWrapper>
@@ -18,6 +18,6 @@ const StyledButton = forwardRef<HTMLButtonElement, StyledButtonProps>(
     }
 );
 
-StyledButton.displayName = "StyledButton"; // for better React DevTools readability
+StyledButton.displayName = "StyledButton";
 
 export default StyledButton;

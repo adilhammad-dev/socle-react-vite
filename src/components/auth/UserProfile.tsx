@@ -1,16 +1,8 @@
 import {useState} from 'react';
-import {
-    Avatar,
-    Button,
-    HStack,
-    Menu,
-    Spinner,
-    Text,
-    VStack,
-} from '@chakra-ui/react';
-import {useColorMode, useColorModeValue} from 'theme/useColorMode';
+import {Avatar, Button, HStack, Menu, Spinner, Text, VStack,} from '@chakra-ui/react';
 import {FaChevronDown, FaMoon, FaSignOutAlt, FaSun} from 'react-icons/fa';
 import {useAuthService, useUserInfo} from 'providers/auth-provider/hooks';
+import {useTheme} from "next-themes";
 
 /**
  * User Profile Component
@@ -20,10 +12,11 @@ export function UserProfile() {
     const userInfo = useUserInfo();
     const {logoutWithPopup} = useAuthService();
     const [isLoggingOut, setIsLoggingOut] = useState(false);
-    const {colorMode, toggleColorMode} = useColorMode();
+    const {theme, setTheme} = useTheme()
+    const toggleTheme = () => {
+        setTheme(theme === "light" ? "dark" : "light")
+    }
 
-    const bgColor = useColorModeValue('white', 'gray.800');
-    const borderColor = useColorModeValue('gray.200', 'gray.600');
 
     if (!userInfo.isAuthenticated) {
         return null;
@@ -42,18 +35,15 @@ export function UserProfile() {
                     variant="ghost"
                     size="sm"
                     p={2}
-                    bg={bgColor}
+                    bg={"bg-primary"}
                     border="1px"
-                    borderColor={borderColor}
-                    _hover={{
-                        bg: useColorModeValue('gray.50', 'gray.700'),
-                    }}
+                    borderColor={"border-default"}
                     disabled={isLoggingOut}
                 >
                     <HStack gap={3}>
-                        <Avatar.Root size="sm">
-                            <Avatar.Image src="" alt={userInfo.name} />
-                            <Avatar.Fallback bg="blue.500" color="white">
+                        <Avatar.Root bg="gray.muted" size="sm">
+                            <Avatar.Image src="" alt={userInfo.name}/>
+                            <Avatar.Fallback color="white">
                                 {userInfo.name?.charAt(0)?.toUpperCase() || 'U'}
                             </Avatar.Fallback>
                         </Avatar.Root>
@@ -85,11 +75,11 @@ export function UserProfile() {
 
                     <Menu.Item
                         value="toggle-color-mode"
-                        onClick={toggleColorMode}
+                        onClick={toggleTheme}
                     >
                         <HStack gap={2}>
-                            {colorMode === 'light' ? <FaMoon/> : <FaSun/>}
-                            <Text>{colorMode === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}</Text>
+                            {theme === "light" ? <FaMoon/> : <FaSun/>}
+                            <Text>{theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}</Text>
                         </HStack>
                     </Menu.Item>
 

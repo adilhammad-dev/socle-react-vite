@@ -3,10 +3,11 @@ import StyledButton from "components/ui/StyledButton";
 import StyledField from "components/ui/StyledField";
 
 export const FormContainer = styled.div`
-    max-width: 500px;
+    width: 30%;
+    max-width: 70%;
     margin: 2rem auto;
     padding: 2rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--chakra-colors-border-default);
     border-radius: 8px;
 
     & > .styled-field-wrapper {
@@ -25,7 +26,6 @@ export const FormField = styled(StyledField)`
 
 
 export const SubmitButton = styled(StyledButton)`
-    min-width: 7rem;
     margin-right: 1rem;
 `;
 

@@ -1,10 +1,10 @@
-import React, {useEffect} from "react";
 import {type SubmitHandler, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {type UserFormData, userValidationSchema} from "utils/validationSchemas";
 import {FormContainer, FormField, FormTitle, SubmitButton,} from "./SimpleUserForm.styled";
 import StyledButton from "components/ui/StyledButton";
 import {HStack} from "@chakra-ui/react";
+import {PageWithHeader} from "@/shared/Layout/PageWithHeader";
 
 interface SimpleUserFormProps {
     onSubmit?: (data: UserFormData) => void | Promise<void>;
@@ -46,56 +46,56 @@ export const SimpleUserForm: React.FC<SimpleUserFormProps> = ({
         reset(defaultValues);
     };
 
-    useEffect(() => {
-        console.log({defaultValues})
-    }, [defaultValues]);
 
     return (
-        <FormContainer>
-            <FormTitle>User Information Form</FormTitle>
+        <PageWithHeader>
+            <FormContainer>
+                <FormTitle>User Information Form</FormTitle>
 
-            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                <form onSubmit={handleSubmit(onSubmit)} noValidate>
 
-                {/* Full Name */}
-                <FormField
-                    label="Full Name *"
-                    placeholder="Enter your full name"
-                    error={errors.fullName?.message}
-                    isInvalid={!!errors.fullName}
-                    type="text"
-                    {...register("fullName")}
-                />
+                    {/* Full Name */}
+                    <FormField
+                        label="Full Name *"
+                        placeholder="Enter your full name"
+                        error={errors.fullName?.message}
+                        isInvalid={!!errors.fullName}
+                        type="text"
+                        {...register("fullName")}
+                    />
 
-                {/* Email */}
-                <FormField
-                    label="Email Address *"
-                    placeholder="Enter your email address"
-                    error={errors.email?.message}
-                    isInvalid={!!errors.email}
-                    type="email"
-                    {...register("email")}
-                />
+                    {/* Email */}
+                    <FormField
+                        label="Email Address *"
+                        placeholder="Enter your email address"
+                        error={errors.email?.message}
+                        isInvalid={!!errors.email}
+                        type="email"
+                        {...register("email")}
+                    />
 
-                {/* Azure ID */}
-                <FormField
-                    label="Azure ID (Optional)"
-                    placeholder="Enter your Azure ID"
-                    error={errors.azureId?.message}
-                    isInvalid={!!errors.azureId}
-                    type="text"
-                    {...register("azureId")}
-                />
+                    {/* Azure ID */}
+                    <FormField
+                        label="Azure ID (Optional)"
+                        placeholder="Enter your Azure ID"
+                        error={errors.azureId?.message}
+                        isInvalid={!!errors.azureId}
+                        type="text"
+                        {...register("azureId")}
+                    />
 
-                <HStack mt="5">
-                    <SubmitButton type="submit" disabled={isSubmitting || !isValid}>
-                        {isSubmitting ? "Submitting..." : "Submit"}
-                    </SubmitButton>
+                    <HStack mt="5">
+                        <SubmitButton variant="outline" type="submit"
+                                      disabled={isSubmitting || !isValid}>
+                            {isSubmitting ? "Submitting..." : "Submit"}
+                        </SubmitButton>
 
-                    <StyledButton type="button" onClick={handleReset}>
-                        Reset Form
-                    </StyledButton>
-                </HStack>
-            </form>
-        </FormContainer>
+                        <StyledButton variant="outline" type="button" onClick={handleReset}>
+                            Reset Form
+                        </StyledButton>
+                    </HStack>
+                </form>
+            </FormContainer>
+        </PageWithHeader>
     );
 };

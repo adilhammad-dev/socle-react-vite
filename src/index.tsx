@@ -8,7 +8,7 @@ import App from './App';
 import store from './services/store';
 import {msalConfig} from './providers/auth-provider/authConfig';
 import system from './theme';
-import {ColorModeProvider} from './theme/useColorMode';
+import {ThemeProvider} from "next-themes"
 import './index.css';
 
 
@@ -20,9 +20,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <MsalProvider instance={msalInstance}>
             <Provider store={store}>
                 <ChakraProvider value={system}>
-                    <ColorModeProvider>
+                    <ThemeProvider attribute="class" disableTransitionOnChange>
                         <App/>
-                    </ColorModeProvider>
+                    </ThemeProvider>
                 </ChakraProvider>
             </Provider>
         </MsalProvider>

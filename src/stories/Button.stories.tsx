@@ -1,7 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 import React from 'react';
-import {Button} from '../components/ui';
-import {FaDownload, FaEnvelope, FaHeart} from 'react-icons/fa';
+import Button from '../components/ui/StyledButton';
 
 const meta: Meta<typeof Button> = {
     title: 'UI/Button',
@@ -36,14 +35,14 @@ const meta: Meta<typeof Button> = {
         },
         variant: {
             control: {type: 'select'},
-            options: ['solid', 'outline', 'ghost', 'link'],
+            options: ['solid', 'outline', 'ghost', 'subtle', 'surface', 'plain'],
             description: 'The variant of the button',
             table: {
                 type: {summary: 'string'},
                 defaultValue: {summary: 'solid'},
             },
         },
-        isLoading: {
+        loading: {
             control: {type: 'boolean'},
             description: 'If true, the button will show a loading spinner',
             table: {
@@ -51,19 +50,12 @@ const meta: Meta<typeof Button> = {
                 defaultValue: {summary: 'false'},
             },
         },
-        isDisabled: {
+        disabled: {
             control: {type: 'boolean'},
             description: 'If true, the button will be disabled',
             table: {
                 type: {summary: 'boolean'},
                 defaultValue: {summary: 'false'},
-            },
-        },
-        loadingText: {
-            control: {type: 'text'},
-            description: 'Text to show when loading',
-            table: {
-                type: {summary: 'string'},
             },
         },
         children: {
@@ -85,8 +77,8 @@ export const Default: Story = {
         size: 'md',
         colorScheme: 'gray',
         variant: 'solid',
-        isLoading: false,
-        isDisabled: false,
+        loading: false,
+        disabled: false,
     },
     parameters: {
         controls: {disable: true},
@@ -173,7 +165,7 @@ export const Variants: Story = {
             <Button variant="solid" colorScheme="blue">Solid</Button>
             <Button variant="outline" colorScheme="blue">Outline</Button>
             <Button variant="ghost" colorScheme="blue">Ghost</Button>
-            <Button variant="link" colorScheme="blue">Link</Button>
+            <Button variant="subtle" colorScheme="blue">Subtle</Button>
         </div>
     ),
     parameters: {
@@ -182,14 +174,14 @@ export const Variants: Story = {
         layout: 'padded',
         docs: {
             description: {
-                story: 'Available button variants: solid, outline, ghost, link',
+                story: 'Available button variants: solid, outline, ghost, subtle',
             },
             source: {
                 code: `<div style={{ display: 'flex', gap: '1rem' }}>
   <Button variant="solid" colorScheme="blue">Solid</Button>
   <Button variant="outline" colorScheme="blue">Outline</Button>
   <Button variant="ghost" colorScheme="blue">Ghost</Button>
-  <Button variant="link" colorScheme="blue">Link</Button>
+  <Button variant="subtle" colorScheme="blue">Subtle</Button>
 </div>`,
                 language: 'tsx',
                 type: 'code'
@@ -202,17 +194,17 @@ export const Variants: Story = {
     },
 };
 
-export const WithIcons: Story = {
+export const WithText: Story = {
     render: () => (
         <div style={{display: 'flex', gap: '1rem', flexDirection: 'column'}}>
             <div style={{display: 'flex', gap: '1rem'}}>
-                <Button leftIcon={<FaEnvelope/>} colorScheme="blue">
+                <Button colorScheme="blue">
                     Email
                 </Button>
-                <Button rightIcon={<FaDownload/>} colorScheme="green">
+                <Button colorScheme="green">
                     Download
                 </Button>
-                <Button leftIcon={<FaHeart/>} colorScheme="red" variant="outline">
+                <Button colorScheme="red" variant="outline">
                     Like
                 </Button>
             </div>
@@ -222,15 +214,18 @@ export const WithIcons: Story = {
         controls: {disable: true},
         actions: {disable: true},
         docs: {
+            description: {
+                story: 'Buttons with different text content and color schemes',
+            },
             source: {
                 code: `<div style={{ display: 'flex', gap: '1rem' }}>
-  <Button leftIcon={<FaEnvelope />} colorScheme="blue">
+  <Button colorScheme="blue">
     Email
   </Button>
-  <Button rightIcon={<FaDownload />} colorScheme="green">
+  <Button colorScheme="green">
     Download
   </Button>
-  <Button leftIcon={<FaHeart />} colorScheme="red" variant="outline">
+  <Button colorScheme="red" variant="outline">
     Like
   </Button>
 </div>`
@@ -244,11 +239,11 @@ export const States: Story = {
         <div style={{display: 'flex', gap: '1rem', flexDirection: 'column'}}>
             <div style={{display: 'flex', gap: '1rem'}}>
                 <Button>Normal</Button>
-                <Button isLoading>Loading</Button>
-                <Button isLoading loadingText="Submitting">
+                <Button loading>Loading</Button>
+                <Button loading>
                     Submit
                 </Button>
-                <Button isDisabled>Disabled</Button>
+                <Button disabled>Disabled</Button>
             </div>
         </div>
     ),
@@ -256,14 +251,17 @@ export const States: Story = {
         controls: {disable: true},
         actions: {disable: true},
         docs: {
+            description: {
+                story: 'Different button states: normal, loading, disabled',
+            },
             source: {
                 code: `<div style={{ display: 'flex', gap: '1rem' }}>
   <Button>Normal</Button>
-  <Button isLoading>Loading</Button>
-  <Button isLoading loadingText="Submitting">
+  <Button loading>Loading</Button>
+  <Button loading>
     Submit
   </Button>
-  <Button isDisabled>Disabled</Button>
+  <Button disabled>Disabled</Button>
 </div>`
             }
         }

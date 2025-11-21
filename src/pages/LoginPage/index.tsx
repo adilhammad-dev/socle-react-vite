@@ -3,7 +3,6 @@ import {Box, Heading, VStack} from '@chakra-ui/react';
 import {useAuthService} from 'providers/auth-provider/hooks';
 import {ErrorMessage, LoadingSpinner, LoginCard, LoginPageWrapper,} from './LoginPage.styled';
 import StyledButton from "components/ui/StyledButton";
-import ColorModeToggle from "components/ui/ColorModeToggle";
 
 export function LoginPage() {
     const {loginWithPopup} = useAuthService();
@@ -25,11 +24,9 @@ export function LoginPage() {
 
     return (
         <LoginPageWrapper>
-            <Box position="absolute" top={4} right={4}>
-                <ColorModeToggle />
-            </Box>
+
             <LoginCard>
-                <VStack align="center" spacing={4}>
+                <VStack align="center">
                     <Heading
                         as="h1"
                         size="xl"
