@@ -64,15 +64,18 @@ The comprehensive documentation includes:
 
 ```
 src/
-├── components/    # Reusable UI components
-├── containers/    # Smart components with business logic
-├── pages/         # Route-level pages
-├── services/      # API, Redux store, and slices
-├── theme/         # Theming configuration
-├── routes/        # Routing setup
-├── providers/     # Context providers (Auth, etc.)
-├── utils/         # Utility functions and hooks
-└── types/         # TypeScript definitions
+├── components/    # Reusable UI components 
+├── containers/    # Smart components connecting UI to Logic
+├── pages/         # Route-level page components
+├── services/      # API definitions (RTK Query) and Redux slices
+├── theme/         # Design system, tokens, and theme config
+├── routes/        # Application routing configuration
+├── providers/     # Context providers (Auth, Theme, etc.)
+├── hooks/         # Custom React hooks
+├── utils/         # Helper functions and utilities
+├── types/         # Shared TypeScript type definitions
+├── assets/        # Static assets (images, fonts)
+└── stories/       # Storybook stories
 ```
 
 ## 🎯 Available Scripts
